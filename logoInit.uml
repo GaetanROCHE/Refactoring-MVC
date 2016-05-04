@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>logoInit</OriginalElement>
+  <nodes>
+    <node x="43.75694444444446" y="168.0">logoInit.Tortue</node>
+    <node x="22.34027777777777" y="945.0">logoInit.SimpleLogo</node>
+    <node x="0.0" y="755.0">logoInit.FeuilleDessin</node>
+    <node x="207.75694444444446" y="0.0">logoInit.Tortue.Segment</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="logoInit.Tortue" target="logoInit.Tortue.Segment">
+      <point x="-175.33333333333337" y="-268.5" />
+      <point x="131.4236111111111" y="143.0" />
+      <point x="240.75694444444446" y="143.0" />
+      <point x="-66.0" y="59.0" />
+    </edge>
+    <edge source="logoInit.Tortue.Segment" target="logoInit.Tortue">
+      <point x="66.0" y="59.0" />
+      <point x="372.75694444444446" y="143.0" />
+      <point x="482.0902777777778" y="143.0" />
+      <point x="175.33333333333337" y="-268.5" />
+    </edge>
+    <edge source="logoInit.FeuilleDessin" target="logoInit.Tortue">
+      <point x="0.0" y="-70.0" />
+      <point x="151.5" y="730.0" />
+      <point x="131.42361111111111" y="730.0" />
+      <point x="-175.33333333333334" y="268.5" />
+    </edge>
+    <edge source="logoInit.SimpleLogo" target="logoInit.Tortue">
+      <point x="57.875" y="-191.5" />
+      <point x="311.71527777777777" y="920.0" />
+      <point x="313.5" y="920.0" />
+      <point x="313.5" y="730.0" />
+      <point x="306.75694444444446" y="730.0" />
+      <point x="0.0" y="268.5" />
+    </edge>
+    <edge source="logoInit.SimpleLogo" target="logoInit.FeuilleDessin">
+      <point x="-173.625" y="-191.5" />
+      <point x="80.21527777777777" y="920.0" />
+      <point x="75.75" y="920.0" />
+      <point x="-75.75" y="70.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="60.5" y="691.5" />
+  <SelectedNodes>
+    <node>logoInit.Tortue</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
