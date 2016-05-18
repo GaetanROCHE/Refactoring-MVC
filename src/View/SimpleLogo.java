@@ -18,22 +18,16 @@ import java.util.Observer;
  Cours de DESS TNI - Montpellier II
 
  @version 2.0
- @date 25/09/
-
 
  **************************************************************************/
 public class SimpleLogo extends JFrame implements Observer {
     public static final Dimension VGAP = new Dimension(1,5);
-    public static final Dimension HGAP = new Dimension(5,1);
+    private static final Dimension HGAP = new Dimension(5,1);
 
     private FeuilleDessin feuille;
     private Tortue courante;
     private JTextField inputValue;
     private Controleur controleur;
-
-    public void setCourante(Tortue courante) {
-        this.courante = courante;
-    }
 
     public FeuilleDessin getFeuille() {
         return feuille;
@@ -58,7 +52,7 @@ public class SimpleLogo extends JFrame implements Observer {
         });
     }
 
-    public void logoInit() {
+    private void logoInit() {
         getContentPane().setLayout(new BorderLayout(10,10));
 
         // Boutons
@@ -141,14 +135,10 @@ public class SimpleLogo extends JFrame implements Observer {
 
         getContentPane().add(feuille,"Center");
 
-        // Creation de la tortue
-        Tortue tortue = new Tortue();
-
         // Deplacement de la tortue au centre de la feuille
-        tortue.setPosition(500/2, 400/2);
+        courante.setPosition(500 >> 1, 400 >> 1);
 
-        courante = tortue;
-        feuille.addTortue(tortue);
+        feuille.addTortue(courante);
 
         pack();
         setVisible(true);
@@ -164,12 +154,12 @@ public class SimpleLogo extends JFrame implements Observer {
         feuille.repaint();
 
         // Replace la tortue au centre
-        Dimension size = feuille.getSize();
-        courante.setPosition(size.width/2, size.height/2);
+        //Dimension size = feuille.getSize();
+        //courante.setPosition(size.width/2, size.height/2);
     }
 
     //utilitaires pour installer des boutons et des menus
-    public void addButton(JComponent p, String name, String tooltiptext, String imageName) {
+    private void addButton(JComponent p, String name, String tooltiptext, String imageName) {
         JButton b;
         if ((imageName == null) || (imageName.equals(""))) {
             b = (JButton)p.add(new JButton(name));
@@ -191,7 +181,7 @@ public class SimpleLogo extends JFrame implements Observer {
         b.addActionListener(controleur);
     }
 
-    public void addMenuItem(JMenu m, String label, String command, int key) {
+    private void addMenuItem(JMenu m, String label, String command, int key) {
         JMenuItem menuItem;
         menuItem = new JMenuItem(label);
         m.add(menuItem);

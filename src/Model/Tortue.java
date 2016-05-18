@@ -1,7 +1,5 @@
 package Model;
 
-import javafx.beans.InvalidationListener;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -34,6 +32,8 @@ public class Tortue extends Observable {
         coul = 0;
         crayon = true;
         listSegments.clear();
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public void setPosition(int newX, int newY) {
@@ -46,6 +46,8 @@ public class Tortue extends Observable {
     public void setColor(int n)
     {
         coul = n;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public int getColor()
@@ -111,10 +113,14 @@ public class Tortue extends Observable {
 
     public void droite(int ang) {
         dir = (dir + ang) % 360;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public void gauche(int ang) {
         dir = (dir - ang) % 360;
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public void baisserCrayon() {
@@ -125,7 +131,7 @@ public class Tortue extends Observable {
         crayon = false;
     }
 
-    public void couleur(int n) {
+    private void couleur(int n) {
         coul = n % 12;
     }
 
