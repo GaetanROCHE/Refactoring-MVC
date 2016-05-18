@@ -16,27 +16,23 @@ import java.util.ArrayList;
  */
 
 public class FeuilleDessin extends JPanel {
-    private ArrayList<Tortue> tortues; // la liste des tortues enregistrees
+    private ArrayList<TortueView> tortues; // la liste des tortues enregistrees
 
-    public void setTortues(ArrayList<Tortue> tortues) {
+    public void setTortues(ArrayList<TortueView> tortues) {
         this.tortues = tortues;
     }
 
-    public ArrayList<Tortue> getTortues() {
-        return tortues;
-    }
-
     public FeuilleDessin() {
-        tortues = new ArrayList<Tortue>();
+        tortues = new ArrayList<>();
     }
 
     public void addTortue(Tortue o) {
-        tortues.add(o);
+        tortues.add(new TortueView(o));
     }
 
     public void reset() {
-        for (Tortue t : tortues) {
-            t.reset();
+        for (TortueView t : tortues) {
+            t.getTortue().reset();
         }
     }
 
@@ -54,7 +50,7 @@ public class FeuilleDessin extends JPanel {
     }
 
     public void showTurtles(Graphics g) {
-        for (Tortue t : tortues) {
+        for (TortueView t : tortues) {
             t.drawTurtle(g);
         }
     }

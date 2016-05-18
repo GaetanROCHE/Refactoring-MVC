@@ -1,6 +1,5 @@
 package Model;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -8,7 +7,6 @@ import java.util.Observable;
  * @author ROCHE Gaetan & PLATTEAU Jonathan
  */
 public class Tortue extends Observable {
-    private static final int rp=10, rb=5; // Taille de la pointe et de la base de la fleche
     private static final double ratioDegRad = 0.0174533; // Rapport radians/degres (pour la conversion)
 
     private ArrayList<Segment> listSegments; // Trace de la tortue
@@ -53,47 +51,6 @@ public class Tortue extends Observable {
     public int getColor()
     {
         return coul;
-    }
-
-    public void drawTurtle (Graphics graph) {
-        if (graph==null)
-            return;
-
-        // Dessine les segments
-        for (Segment seg : listSegments) {
-            seg.drawSegment(graph);
-        }
-
-        //Calcule les 3 coins du triangle a partir de
-        // la position de la tortue p
-        Point p = new Point(x,y);
-        Polygon arrow = new Polygon();
-
-        //Calcule des deux bases
-        //Angle de la droite
-        double theta=ratioDegRad*(-dir);
-        //Demi angle au sommet du triangle
-        double alpha=Math.atan( (float)rb / (float)rp );
-        //Rayon de la fleche
-        double r=Math.sqrt( rp*rp + rb*rb );
-        //Sens de la fleche
-
-        //Pointe
-        Point p2=new Point((int) Math.round(p.x+r*Math.cos(theta)),
-                (int) Math.round(p.y-r*Math.sin(theta)));
-        arrow.addPoint(p2.x,p2.y);
-        arrow.addPoint((int) Math.round( p2.x-r*Math.cos(theta + alpha) ),
-                (int) Math.round( p2.y+r*Math.sin(theta + alpha) ));
-
-        //Base2
-        arrow.addPoint((int) Math.round( p2.x-r*Math.cos(theta - alpha) ),
-                (int) Math.round( p2.y+r*Math.sin(theta - alpha) ));
-
-        arrow.addPoint(p2.x,p2.y);
-        graph.setColor(Color.green);
-        graph.fillPolygon(arrow);
-        this.setChanged();
-        this.notifyObservers();
     }
 
     public void avancer(int dist) {
@@ -168,5 +125,21 @@ public class Tortue extends Observable {
         }
         this.setChanged();
         this.notifyObservers();
+    }
+
+    public int getDirection() {
+        return dir;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public ArrayList<Segment> getListSegments() {
+        return listSegments;
     }
 }
