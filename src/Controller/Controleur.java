@@ -11,17 +11,17 @@ import java.util.ArrayList;
  * @author ROCHE Gaetan & PLATTEAU Jonathan
  */
 public class Controleur extends Thread implements ActionListener {
-    private SimpleLogo simpleLogo;
-    private Tortue courante;
-    private ArrayList<Tortue> tortues = new ArrayList<>();
+    protected int width = 600, height = 400;
+    protected SimpleLogo simpleLogo;
+    protected Tortue courante;
+
     public Tortue getCurrent() {
         return courante;
     }
 
     public Controleur() {
-        courante = new Tortue(600, 400);
-        tortues.add(courante);
-        simpleLogo = new SimpleLogo(this, 600, 400);
+        courante = new Tortue(width, height);
+        simpleLogo = new SimpleLogo(this, width, height);
         courante.addObserver(simpleLogo);
     }
 
