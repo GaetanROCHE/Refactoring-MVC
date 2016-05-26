@@ -14,15 +14,14 @@ public class Controleur extends Thread implements ActionListener {
     private SimpleLogo simpleLogo;
     private Tortue courante;
     private ArrayList<Tortue> tortues = new ArrayList<>();
-
     public Tortue getCurrent() {
         return courante;
     }
 
     public Controleur() {
-        courante = new Tortue();
+        courante = new Tortue(600, 400);
         tortues.add(courante);
-        simpleLogo = new SimpleLogo(this);
+        simpleLogo = new SimpleLogo(this, 600, 400);
         courante.addObserver(simpleLogo);
     }
 

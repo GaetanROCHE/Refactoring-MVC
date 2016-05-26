@@ -12,12 +12,15 @@ public class Tortue extends Observable {
     private ArrayList<Segment> listSegments; // Trace de la tortue
 
     private int x, y;
+    private int width, height;
     private int dir;
     private boolean crayon;
     private int coul;
 
-    public Tortue() {
+    public Tortue(int _width, int _height) {
         listSegments = new ArrayList<>();
+        this.width = _width;
+        this.height = _height;
         reset();
         this.setChanged();
         this.notifyObservers();
@@ -62,8 +65,14 @@ public class Tortue extends Observable {
             listSegments.add(seg);
         }
 
-        x = newX;
-        y = newY;
+        x = (newX + width) % width;
+        y = (newY + height)% height;
+        if (crayon) { //on affiche le segment dans le sens inverse pour avoir l'impression que le segment se prolonge
+            int oldX = (int) Math.round(x-dist*Math.cos(ratioDegRad*dir));
+            int oldY = (int) Math.round(y-dist*Math.sin(ratioDegRad*dir));
+            Segment seg = new Segment(x, y, oldX, oldY, coul);
+            listSegments.add(seg);
+        }
         this.setChanged();
         this.notifyObservers();
     }

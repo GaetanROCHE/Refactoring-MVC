@@ -28,6 +28,7 @@ public class SimpleLogo extends JFrame implements Observer {
     private Tortue courante;
     private JTextField inputValue;
     private Controleur controleur;
+    private int width, height;
 
     public FeuilleDessin getFeuille() {
         return feuille;
@@ -37,10 +38,12 @@ public class SimpleLogo extends JFrame implements Observer {
         System.exit(0);
     }
 
-    public SimpleLogo(Controleur controleur) {
+    public SimpleLogo(Controleur controleur, int _width, int _height) {
         super("un logo tout simple");
         this.controleur = controleur;
         this.courante = controleur.getCurrent();
+        this.width = _width;
+        this.height = _height;
         logoInit();
         this.setVisible(true);
         addWindowListener(new WindowAdapter() {
@@ -128,15 +131,15 @@ public class SimpleLogo extends JFrame implements Observer {
 
         getContentPane().add(p2,"South");
 
-        feuille = new FeuilleDessin(); //500, 400);
+        feuille = new FeuilleDessin();
         feuille.setBackground(Color.white);
-        feuille.setSize(new Dimension(600,400));
-        feuille.setPreferredSize(new Dimension(600,400));
+        feuille.setSize(new Dimension(width,height));
+        feuille.setPreferredSize(new Dimension(width, height));
 
         getContentPane().add(feuille,"Center");
 
         // Deplacement de la tortue au centre de la feuille
-        courante.setPosition(500 >> 1, 400 >> 1);
+        courante.setPosition(width >> 1, height >> 1);
 
         feuille.addTortue(courante);
 
