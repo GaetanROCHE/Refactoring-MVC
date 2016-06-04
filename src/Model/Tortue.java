@@ -28,9 +28,8 @@ public class Tortue extends Observable {
     }
 
     public void reset() {
-        x = 0;
-        y = 0;
-        dir = -90;
+        setPosition(width >> 1, height >> 1);
+        dir = 270;
         coul = 0;
         crayon = true;
         listSegments.clear();
@@ -39,6 +38,7 @@ public class Tortue extends Observable {
     }
 
     public void setPosition(int newX, int newY) {
+
         x = newX;
         y = newY;
         this.setChanged();
@@ -151,5 +151,9 @@ public class Tortue extends Observable {
 
     public ArrayList<Segment> getListSegments() {
         return listSegments;
+    }
+
+    public boolean getCrayon() {
+        return crayon;
     }
 }
