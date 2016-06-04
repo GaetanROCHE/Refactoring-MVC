@@ -61,14 +61,35 @@ public class TortueTest extends TestCase {
     }
 
     public void testCarre() throws Exception {
-
+        int initialX, initialY, nombreSegment;
+        initialX = caroline.getX();
+        initialY = caroline.getY();
+        nombreSegment = caroline.getListSegments().size();
+        caroline.carre();
+        assertEquals(initialX, caroline.getX());
+        assertEquals(initialY, caroline.getY());
+        assertEquals(nombreSegment+8, caroline.getListSegments().size());
     }
 
     public void testPoly() throws Exception {
-
+        int initialX, initialY, nombreSegment;
+        initialX = caroline.getX();
+        initialY = caroline.getY();
+        nombreSegment = caroline.getListSegments().size();
+        caroline.poly(5,6);
+        assertEquals(initialX, caroline.getX());
+        assertEquals(initialY, caroline.getY());
+        assertEquals(nombreSegment+12, caroline.getListSegments().size());
     }
 
     public void testSpiral() throws Exception {
-
+        int initialX, initialY, nombreSegment;
+        initialX = caroline.getX();
+        initialY = caroline.getY();
+        nombreSegment = caroline.getListSegments().size();
+        caroline.spiral(4,12,8);
+        assertEquals(initialX+25, caroline.getX());
+        assertEquals(initialY-7, caroline.getY());
+        assertEquals(nombreSegment+24, caroline.getListSegments().size());
     }
 }
