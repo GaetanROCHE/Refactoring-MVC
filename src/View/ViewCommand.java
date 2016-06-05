@@ -1,13 +1,12 @@
 package View;
 
-import Controller.Controleur;
-import Model.Tortue;
+import Controller.ManualController;
+import Model.SimpleTortue;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Observable;
-import java.util.Observer;
 
 /*************************************************************************
 
@@ -20,42 +19,19 @@ import java.util.Observer;
  @version 2.0
 
  **************************************************************************/
-public class SimpleLogo extends JFrame implements Observer {
+public class ViewCommand extends SimpleView {
     public static final Dimension VGAP = new Dimension(1,5);
     private static final Dimension HGAP = new Dimension(5,1);
 
-    private FeuilleDessin feuille;
-    private Tortue courante;
-    private JTextField inputValue;
-    private Controleur controleur;
-    private int width, height;
 
-    public FeuilleDessin getFeuille() {
-        return feuille;
+    private SimpleTortue courante;
+
+    public ViewCommand(ManualController manualControleur, int _width, int _height) {
+        super(manualControleur, _width, _height);
+        this.courante = manualControleur.getCurrent();
     }
 
-    public void quitter() {
-        System.exit(0);
-    }
-
-    public SimpleLogo(Controleur controleur, int _width, int _height) {
-        super("un logo tout simple");
-        this.controleur = controleur;
-        this.courante = controleur.getCurrent();
-        this.width = _width;
-        this.height = _height;
-        logoInit();
-        this.setVisible(true);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent arg0) {
-                super.windowClosing(arg0);
-                System.exit(0);
-            }
-        });
-    }
-
-    private void logoInit() {
+    void logoInit() {
         getContentPane().setLayout(new BorderLayout(10,10));
 
         // Boutons
@@ -138,24 +114,10 @@ public class SimpleLogo extends JFrame implements Observer {
 
         getContentPane().add(feuille,"Center");
 
-        feuille.addTortue(courante);
+        //feuille.addTortue(courante);
 
         pack();
         setVisible(true);
-    }
-
-    public String getInputValue(){
-        return(inputValue.getText());
-    }
-
-    // efface tout et reinitialise la feuille
-    public void effacer() {
-        feuille.reset();
-        feuille.repaint();
-
-        // Replace la tortue au centre
-        //Dimension size = feuille.getSize();
-        //courante.setPosition(size.width/2, size.height/2);
     }
 
     //utilitaires pour installer des boutons et des menus

@@ -1,29 +1,24 @@
 package Controller;
 
-import Model.Tortue;
+import Model.SimpleTortue;
+import View.ViewRandom;
 
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
  * Created by the mother of dragons
  */
-public class RandomMode extends Controleur {
-    private ArrayList<Tortue> tortues = new ArrayList<>();
+public class RandomController extends Controleur {
+    protected ArrayList<SimpleTortue> tortues = new ArrayList<>();
 
-    public Tortue getCurrent() {
-        return courante;
-    }
-
-    public RandomMode(byte number) {
-        super();
-        tortues.add(courante);
-        while(number > 1) {
-            Tortue t = new Tortue(width, height);
+    public RandomController(byte number) {
+        vue = new ViewRandom(this, width, height);
+        while(number > 0) {
+            SimpleTortue t = new SimpleTortue(width, height);
             tortues.add(t);
-            t.addObserver(simpleLogo);
-            simpleLogo.getFeuille().addTortue(t);
+            t.addObserver(vue);
+            vue.getFeuille().addTortue(t);
             number--;
         }
     }
@@ -33,7 +28,7 @@ public class RandomMode extends Controleur {
         super.run();
         Random rand;
         while(true) {
-            for (Tortue t: tortues) {
+            for (SimpleTortue t: tortues) {
                 rand = new Random();
                 int alea = rand.nextInt(3);
                 switch(alea){
@@ -51,25 +46,12 @@ public class RandomMode extends Controleur {
 
                 }
             }
-            simpleLogo.getFeuille().repaint();
+            vue.getFeuille().repaint();
             try {
                 sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String c = e.getActionCommand();
-
-        // actions des boutons du haut
-        switch (c) {
-            case "Quitter":
-                simpleLogo.quitter();
-                break;
-        }
-        simpleLogo.getFeuille().repaint();
     }
 }

@@ -5,12 +5,12 @@ import junit.framework.TestCase;
 /**
  * Created by gaetan on 04/06/16.
  */
-public class TortueTest extends TestCase {
+public class SimpleTortueTest extends TestCase {
 
-    Tortue caroline;
+    SimpleTortue caroline;
 
     public void setUp() throws Exception {
-        caroline = new Tortue(600,400);
+        caroline = new SimpleTortue(600,400);
     }
 
     public void testReset() throws Exception {
@@ -44,12 +44,12 @@ public class TortueTest extends TestCase {
 
     public void testDroite() throws Exception {
         caroline.droite(90);
-        assertEquals(0, caroline.getDirection());
+        assertEquals(0, caroline.getDir());
     }
 
     public void testGauche() throws Exception {
         caroline.gauche(90);
-        assertEquals(180, caroline.getDirection());
+        assertEquals(180, caroline.getDir());
     }
 
     public void testBaisserCrayon() throws Exception {

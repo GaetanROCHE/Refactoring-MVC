@@ -1,6 +1,6 @@
 package View;
 
-import Model.Tortue;
+import Model.SimpleTortue;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  * Titre :        Logo
- * Description :  Un exemple de programme graphique utilisant la celebre Tortue Logo
+ * Description :  Un exemple de programme graphique utilisant la celebre SimpleTortue Logo
  * Copyright :    Copyright (c) 2000
  * Societe :      LIRMM
  * @author J. Ferber
@@ -26,7 +26,7 @@ public class FeuilleDessin extends JPanel {
         tortues = new ArrayList<>();
     }
 
-    public void addTortue(Tortue o) {
+    public void addTortue(SimpleTortue o) {
         tortues.add(new TortueView(o));
     }
 

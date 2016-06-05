@@ -1,5 +1,6 @@
-import Controller.Controleur;
-import Controller.RandomMode;
+import Controller.ManualController;
+import Controller.FlockingController;
+import Controller.RandomController;
 
 import java.util.Scanner;
 
@@ -24,16 +25,20 @@ public class Main {
             // Switch construct
             switch (choice) {
                 case 1:
-                    new Controleur();
+                    new ManualController();
                     break;
                 case 2:
                     System.out.println("How many troubadours?");
                     scanner = new Scanner(System.in);
                     choice = scanner.nextByte();
-                    new RandomMode(choice).run();
+                    new RandomController(choice).run();
                     break;
                 case 3:
                     System.out.println("Option 3 selected");  // this is where I want to call the class
+                    System.out.println("How many troubadours?");
+                    scanner = new Scanner(System.in);
+                    choice = scanner.nextByte();
+                    new FlockingController(choice).run();
                     break;
                 default:
                     System.out.println("Invalid selection");

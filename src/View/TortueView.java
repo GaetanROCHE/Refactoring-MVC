@@ -1,7 +1,7 @@
 package View;
 
 import Model.Segment;
-import Model.Tortue;
+import Model.SimpleTortue;
 
 import java.awt.*;
 
@@ -9,16 +9,16 @@ import java.awt.*;
  * @author ROCHE Gaetan & PLATTEAU Jonathan
  */
 public class TortueView {
-    private Tortue tortue;
+    private SimpleTortue tortue;
     private static final int rp=10, rb=5; // Taille de la pointe et de la base de la fleche
     private static final double ratioDegRad = 0.0174533; // Rapport radians/degres (pour la conversion)
 
-    public TortueView(Tortue t)
+    public TortueView(SimpleTortue t)
     {
         tortue = t;
     }
 
-    public Tortue getTortue() {
+    public SimpleTortue getTortue() {
         return tortue;
     }
 
@@ -39,7 +39,7 @@ public class TortueView {
 
         //Calcule des deux bases
         //Angle de la droite
-        double theta=ratioDegRad*(-tortue.getDirection());
+        double theta=ratioDegRad*(-tortue.getDir());
         //Demi angle au sommet du triangle
         double alpha=Math.atan( (float)rb / (float)rp );
         //Rayon de la fleche
