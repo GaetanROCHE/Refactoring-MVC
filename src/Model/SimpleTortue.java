@@ -6,11 +6,10 @@ import java.util.ArrayList;
  * @author ROCHE Gaetan & PLATTEAU Jonathan
  */
 public class SimpleTortue extends Tortue {
-    private static final double ratioDegRad = 0.0174533; // Rapport radians/degres (pour la conversion)
 
     private ArrayList<Segment> listSegments; // Trace de la tortue
 
-    private boolean crayon;
+    protected boolean crayon;
     private int coul;
 
     public SimpleTortue(int _width, int _height) {

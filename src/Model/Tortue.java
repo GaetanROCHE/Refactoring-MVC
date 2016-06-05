@@ -3,6 +3,8 @@ package Model;
 import java.util.Observable;
 
 public abstract class Tortue extends Observable {
+    protected static final double ratioDegRad = 0.0174533; // Rapport radians/degres (pour la conversion)
+
     private int x, y;
     private int width, height;
     private int dir;

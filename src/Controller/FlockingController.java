@@ -11,7 +11,7 @@ public class FlockingController extends Controleur {
     public FlockingController(byte number) {
         vue = new ViewRandom(this, width, height);
         while(number > 0) {
-            SmartTortue t = new SmartTortue(width, height, 45, 10, 10, 10);
+            SmartTortue t = new SmartTortue(width, height, 90, 50, 10, 10);
             tortues.add(t);
             t.addObserver(vue);
             vue.getFeuille().addTortue(t);
@@ -24,7 +24,9 @@ public class FlockingController extends Controleur {
         super.run();
         while(true) {
             for (SmartTortue t: tortues) {
-                t.moveFlocking(tortues);
+                ArrayList<SmartTortue> temp = (ArrayList<SmartTortue>) tortues.clone();
+                temp.remove(t);
+                t.moveFlocking(temp);
             }
             vue.getFeuille().repaint();
             try {
