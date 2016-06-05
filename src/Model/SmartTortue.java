@@ -49,8 +49,9 @@ public class SmartTortue extends SimpleTortue {
     }
 
     public boolean estDansChampsVision(SmartTortue t){
+        int x = t.getX();
+        int y = t.getY();
         return true;
-        //TO DO
     }
 
     public int getVitesse() {
