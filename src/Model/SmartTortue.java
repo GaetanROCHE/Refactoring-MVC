@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.lang.Math;
 
 /**
  * Created by gaetan on 05/06/16.
@@ -44,8 +45,12 @@ public class SmartTortue extends SimpleTortue {
 
         //maintenant on check qu'on est a une distance minimal des autres tortues
         for (SmartTortue t : tortues) {
-            //TO DO
+            if(distance(t) <= distMin);
         }
+    }
+
+    public double distance(Tortue t) {
+        return Math.sqrt(Math.pow(t.getX() - this.getX(), 2) + Math.pow(t.getY() - this.getY(), 2));
     }
 
     public boolean estDansChampsVision(SmartTortue t){
