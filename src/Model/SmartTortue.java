@@ -69,10 +69,17 @@ public class SmartTortue extends SimpleTortue {
     }
 
     public boolean estDansChampsVision(SmartTortue t){
-        double oa = ((double)t.getY()-(double)this.getY())/((double)t.getX()-(double)this.getX());
-        Double angleCible = (Math.toDegrees(Math.atan(oa)) + 360) % 360; //angle entre l'axe des deux tortue et l'horizontal
-        System.out.println(angleCible);
-        return angleCible<(this.getDir()-angle/2+360)%360 && angleCible > (this.getDir()+angle/2)%360 && distance(t)<=viewDist;
+        if(distance(t)>viewDist)
+            return false;
+        //angle entre l'axe des deux tortue et l'horizontal
+        double angleCible = Math.atan2(t.getY() - this.getY(), t.getX() - this.getX());
+        angleCible = Math.toDegrees(angleCible);
+        double angleMax = this.getDir() + angle / 2;
+        double angleMin = this.getDir() - angle / 2;
+        if (angleMin < 0)
+            return angleCible + 90 < angleMax + 90 && angleCible + 90 > angleMin + 90;
+        else
+            return angleCible < angleMax && angleCible > angleMin;
     }
 
     public int getVitesse() {
