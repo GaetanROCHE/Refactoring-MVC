@@ -32,7 +32,7 @@ public class FlockingTortue extends AutomatedTortue {
         int i = 0;
         for (AutomatedTortue t: tortues) {
             if(estDansChampsVision(t)){
-                System.out.println("champs vision");
+                // 3System.out.println("champs vision");
                 dirMoy += t.getDir();
                 vitesseMoy += t.getVitesse();
                 i++;
@@ -56,7 +56,7 @@ public class FlockingTortue extends AutomatedTortue {
         int newY = (int) Math.round(this.getY()+getVitesse()*Math.sin(ratioDegRad*this.getDir()));
         while( Math.sqrt(Math.pow(t.getX() - newX, 2) + Math.pow(t.getY() - newY, 2)) < distMin && getVitesse() > 0){
             setVitesse(getVitesse()-1);
-            System.out.println("trop proche");
+            // System.out.println("trop proche");
             newX = (int) Math.round(this.getX()+getVitesse()*Math.cos(ratioDegRad*this.getDir()));
             newY = (int) Math.round(this.getY()+getVitesse()*Math.sin(ratioDegRad*this.getDir()));
         }
@@ -73,11 +73,8 @@ public class FlockingTortue extends AutomatedTortue {
         //angle entre l'axe des deux tortue et l'horizontal
         double angleCible = Math.atan2(t.getY() - this.getY(), t.getX() - this.getX());
         angleCible = Math.toDegrees(angleCible);
-        double angleMax = this.getDir() + angle / 2;
-        double angleMin = this.getDir() - angle / 2;
-        if (angleMin < 0)
-            return angleCible + 90 < angleMax + 90 && angleCible + 90 > angleMin + 90;
-        else
-            return angleCible < angleMax && angleCible > angleMin;
+        double anglediff = (this.getDir() -  angleCible + 180 + 360) % 360 - 180;
+
+        return (anglediff <= 45 && anglediff>=-45);
     }
 }
