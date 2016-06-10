@@ -1,6 +1,7 @@
 package View;
 
 import Model.SimpleTortue;
+import Model.Tortue;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +27,7 @@ public class FeuilleDessin extends JPanel {
         tortues = new ArrayList<>();
     }
 
-    public void addTortue(SimpleTortue o) {
+    public void addTortue(Tortue o) {
         tortues.add(new TortueView(o));
     }
 

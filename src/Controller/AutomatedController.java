@@ -1,32 +1,31 @@
 package Controller;
 
-import Model.SmartTortue;
+import Model.AutomatedTortue;
 import View.ViewRandom;
 
 import java.util.ArrayList;
 
-public class FlockingController extends Controleur {
-    protected ArrayList<SmartTortue> tortues = new ArrayList<>();
+public class AutomatedController extends Controleur {
+    protected ArrayList<AutomatedTortue> tortues;
 
-    public FlockingController(byte number) {
+    public AutomatedController(ArrayList<AutomatedTortue> tortues, int height, int width) {
+        super(width, height);
         vue = new ViewRandom(this, width, height);
-        while(number > 0) {
-            SmartTortue t = new SmartTortue(width, height, 90, 100, 10, 1);
-            tortues.add(t);
+        for(AutomatedTortue t : tortues) {
             t.addObserver(vue);
             vue.getFeuille().addTortue(t);
-            number--;
         }
+        this.tortues = tortues;
     }
 
     @Override
     public void run(){
         super.run();
         while(true) {
-            for (SmartTortue t: tortues) {
-                ArrayList<SmartTortue> temp = (ArrayList<SmartTortue>) tortues.clone();
+            for (AutomatedTortue t: tortues) {
+                ArrayList<AutomatedTortue> temp = (ArrayList<AutomatedTortue>) tortues.clone();
                 temp.remove(t);
-                t.moveFlocking(temp);
+                t.move(temp);
             }
             vue.getFeuille().repaint();
             try {

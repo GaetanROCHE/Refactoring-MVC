@@ -16,7 +16,8 @@ public class ManualController extends Controleur {
         return courante;
     }
 
-    public ManualController() {
+    public ManualController(int height, int width) {
+        super(width, height);
         courante = new SimpleTortue(width, height);
         vue = new ViewCommand(this, width, height);
         courante.addObserver(vue);
