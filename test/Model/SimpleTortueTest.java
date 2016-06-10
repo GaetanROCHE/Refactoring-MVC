@@ -14,7 +14,7 @@ public class SimpleTortueTest extends TestCase {
     }
 
     public void testReset() throws Exception {
-        int initialX, initialY;
+        double initialX, initialY;
         initialX = caroline.getX();
         initialY = caroline.getY();
         caroline.avancer(10);
@@ -61,7 +61,7 @@ public class SimpleTortueTest extends TestCase {
     }
 
     public void testCarre() throws Exception {
-        int initialX, initialY, nombreSegment;
+        double initialX, initialY, nombreSegment;
         initialX = caroline.getX();
         initialY = caroline.getY();
         nombreSegment = caroline.getListSegments().size();
@@ -72,7 +72,7 @@ public class SimpleTortueTest extends TestCase {
     }
 
     public void testPoly() throws Exception {
-        int initialX, initialY, nombreSegment;
+        double initialX, initialY, nombreSegment;
         initialX = caroline.getX();
         initialY = caroline.getY();
         nombreSegment = caroline.getListSegments().size();
@@ -83,7 +83,7 @@ public class SimpleTortueTest extends TestCase {
     }
 
     public void testSpiral() throws Exception {
-        int initialX, initialY, nombreSegment;
+        double initialX, initialY, nombreSegment;
         initialX = caroline.getX();
         initialY = caroline.getY();
         nombreSegment = caroline.getListSegments().size();

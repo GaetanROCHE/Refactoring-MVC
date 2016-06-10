@@ -27,9 +27,9 @@ public class Segment {
         }
     }
 
-    Segment(int x1, int y1, int x2, int y2, int c) {
-        ptStart = new Point(x1,y1);
-        ptEnd = new Point(x2,y2);
+    Segment(double x1, double y1, double x2, double y2, int c) {
+        ptStart = new Point((int)x1,(int)y1);
+        ptEnd = new Point((int)x2,(int)y2);
         color = decodeColor(c);
     }
 

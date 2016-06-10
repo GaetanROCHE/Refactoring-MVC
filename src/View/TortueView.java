@@ -35,7 +35,7 @@ public class TortueView {
 
         //Calcule les 3 coins du triangle a partir de
         // la position de la tortue p
-        Point p = new Point(tortue.getX(),tortue.getY());
+        Point p = new Point((int)tortue.getX(),(int)tortue.getY());
         Polygon arrow = new Polygon();
 
         //Calcule des deux bases

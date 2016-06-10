@@ -46,9 +46,9 @@ public class Main {
                     scanner = new Scanner(System.in);
                     number = scanner.nextByte();
                     for(int i=0; i<number; i++){
-                        tortues.add(new FlockingTortue(600, 400, 90, 50, 10, 10));
+                        tortues.add(new FlockingTortue(1200, 800, 90, 75, 10, 10));
                     }
-                    new AutomatedController(tortues, 600, 400).run();
+                    new AutomatedController(tortues, 1200, 800).run();
                     break;
                 default:
                     System.out.println("Invalid selection");

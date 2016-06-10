@@ -8,7 +8,7 @@ public abstract class Tortue extends Observable {
 
     ArrayList<Segment> listSegments; // Trace de la tortue
 
-    private int x, y;
+    private double x, y;
     private int width, height;
     private int dir;
     boolean crayon;
@@ -45,8 +45,8 @@ public abstract class Tortue extends Observable {
     }
 
     public void avancer(int dist) {
-        int newX = (int) Math.round(getX()+dist*Math.cos(ratioDegRad*getDir()));
-        int newY = (int) Math.round(getY()+dist*Math.sin(ratioDegRad*getDir()));
+        double newX = Math.round(getX()+dist*Math.cos(ratioDegRad*getDir()));
+        double newY = Math.round(getY()+dist*Math.sin(ratioDegRad*getDir()));
 
         if (crayon) {
             Segment seg = new Segment(getX(), getY(), newX, newY, getColor());
@@ -56,8 +56,8 @@ public abstract class Tortue extends Observable {
         setX((newX + getWidth()) % getWidth());
         setY((newY + getHeight()) % getHeight());
         if (crayon) { //on affiche le segment dans le sens inverse pour avoir l'impression que le segment se prolonge
-            int oldX = (int) Math.round(getX()-dist*Math.cos(ratioDegRad*getDir()));
-            int oldY = (int) Math.round(getY()-dist*Math.sin(ratioDegRad*getDir()));
+            double oldX = Math.round(getX()-dist*Math.cos(ratioDegRad*getDir()));
+            double oldY = Math.round(getY()-dist*Math.sin(ratioDegRad*getDir()));
             Segment seg = new Segment(getX(), getY(), oldX, oldY, getColor());
             listSegments.add(seg);
         }
@@ -70,19 +70,19 @@ public abstract class Tortue extends Observable {
         return coul;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
