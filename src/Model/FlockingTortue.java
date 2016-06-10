@@ -32,13 +32,13 @@ public class FlockingTortue extends AutomatedTortue {
         int i = 0;
         for (AutomatedTortue t: tortues) {
             if(estDansChampsVision(t)){
-                // 3System.out.println("champs vision");
+                // System.out.println("champs vision");
                 dirMoy += t.getDir();
                 vitesseMoy += t.getVitesse();
                 i++;
             }
         }
-        if(i !=0) {
+        if(i != 0) {
             setVitesse(vitesseMoy / i);
             setDir(dirMoy / i);
         }
@@ -75,6 +75,6 @@ public class FlockingTortue extends AutomatedTortue {
         angleCible = Math.toDegrees(angleCible);
         double anglediff = (this.getDir() -  angleCible + 180 + 360) % 360 - 180;
 
-        return (anglediff <= 45 && anglediff>=-45);
+        return (anglediff <= angle && anglediff>=-angle);
     }
 }
