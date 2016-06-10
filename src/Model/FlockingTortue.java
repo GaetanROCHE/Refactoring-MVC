@@ -27,9 +27,9 @@ public class FlockingTortue extends AutomatedTortue {
 
 
     public void move(ArrayList<AutomatedTortue> tortues) {
-        int vitesseMoy = 0;
-        int dirMoy = 0;
-        int i = 0;
+        int vitesseMoy = getVitesse();
+        int dirMoy = getDir();
+        int i = 1;
         for (AutomatedTortue t: tortues) {
             if(estDansChampsVision(t)){
                 // System.out.println("champs vision");
@@ -38,10 +38,8 @@ public class FlockingTortue extends AutomatedTortue {
                 i++;
             }
         }
-        if(i != 0) {
-            setVitesse(vitesseMoy / i);
-            setDir(dirMoy / i);
-        }
+        setVitesse(vitesseMoy / i);
+        setDir(dirMoy / i);
 
         //maintenant on check qu'on est a une distance minimal des autres tortues
         // si non on réduit la vitesse
