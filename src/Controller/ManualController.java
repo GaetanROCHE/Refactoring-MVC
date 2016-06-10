@@ -16,7 +16,7 @@ public class ManualController extends Controleur {
         return courante;
     }
 
-    public ManualController(int height, int width) {
+    public ManualController(int width, int height) {
         super(width, height);
         courante = new SimpleTortue(width, height);
         vue = new ViewCommand(this, width, height);

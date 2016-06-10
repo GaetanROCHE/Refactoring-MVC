@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class AutomatedController extends Controleur {
     protected ArrayList<AutomatedTortue> tortues;
 
-    public AutomatedController(ArrayList<AutomatedTortue> tortues, int height, int width) {
+    public AutomatedController(ArrayList<AutomatedTortue> tortues, int width, int height) {
         super(width, height);
         vue = new ViewRandom(this, width, height);
         for(AutomatedTortue t : tortues) {
@@ -29,7 +29,7 @@ public class AutomatedController extends Controleur {
             }
             vue.getFeuille().repaint();
             try {
-                sleep(200);
+                sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
