@@ -70,7 +70,7 @@ public class SimpleLogo extends JFrame implements Observer {
         toolBar.add(Box.createRigidArea(HGAP));
         inputValue=new JTextField("45",5);
         toolBar.add(inputValue);
-        addButton(toolBar, "Avancer", "Avancer 50", null);
+        addButton(toolBar, "Avancer", "Avancer", null);
         addButton(toolBar, "Droite", "Droite 45", null);
         addButton(toolBar, "Gauche", "Gauche 45", null);
         addButton(toolBar, "Lever", "Lever Crayon", null);
@@ -152,10 +152,6 @@ public class SimpleLogo extends JFrame implements Observer {
     public void effacer() {
         feuille.reset();
         feuille.repaint();
-
-        // Replace la tortue au centre
-        //Dimension size = feuille.getSize();
-        //courante.setPosition(size.width/2, size.height/2);
     }
 
     //utilitaires pour installer des boutons et des menus
