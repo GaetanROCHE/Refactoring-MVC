@@ -7,7 +7,7 @@ import junit.framework.TestCase;
  */
 public class SimpleTortueTest extends TestCase {
 
-    SimpleTortue caroline;
+    private SimpleTortue caroline;
 
     public void setUp() throws Exception {
         caroline = new SimpleTortue(600,400);

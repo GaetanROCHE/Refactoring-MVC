@@ -30,6 +30,12 @@ public abstract class Tortue extends Observable {
         this.notifyObservers();
     }
 
+    public void clearSegment() {
+        listSegments.clear();
+        this.setChanged();
+        this.notifyObservers();
+    }
+
     public void setPosition(int newX, int newY) {
         this.setX(newX);
         this.setY(newY);
@@ -39,7 +45,7 @@ public abstract class Tortue extends Observable {
 
     public void setColor(int n)
     {
-        coul = n;
+        coul = n % 12;
         this.setChanged();
         this.notifyObservers();
     }

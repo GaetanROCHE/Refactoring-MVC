@@ -20,7 +20,8 @@ public class RandomTortue extends AutomatedTortue {
                 setDir(rand.nextInt(360));
                 break;
             case 1 :
-                avancer(rand.nextInt(100));
+                setVitesse(rand.nextInt(50));
+                avancer(getVitesse());
                 break;
             case 2 :
                 setColor(rand.nextInt(12));

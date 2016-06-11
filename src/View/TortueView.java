@@ -28,9 +28,13 @@ public class TortueView {
             return;
 
         // Dessine les segments
-        for (Segment seg : tortue.getListSegments()) {
-            graph.setColor(seg.getColor());
-            graph.drawLine(seg.getPtStart().x, seg.getPtStart().y, seg.getPtEnd().x, seg.getPtEnd().y);
+        try {
+            for (Segment seg : tortue.getListSegments()) {
+                graph.setColor(seg.getColor());
+                graph.drawLine(seg.getPtStart().x, seg.getPtStart().y, seg.getPtEnd().x, seg.getPtEnd().y);
+            }
+        }catch(Exception ignored){
+
         }
 
         //Calcule les 3 coins du triangle a partir de

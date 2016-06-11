@@ -14,15 +14,11 @@ public class FlockingTortue extends AutomatedTortue {
 
     public FlockingTortue(int _width, int _height, int angle, int viewDist, int vitesse, int distMin) {
         super(_width, _height);
-        Random rand = new Random();
         this.angle = angle;
         this.viewDist = viewDist;
         this.distMin = distMin;
-        this.crayon = false;
-        this.setDir(rand.nextInt(360));
+        this.crayon = true;
         setVitesse(vitesse);
-        setX(rand.nextInt(_width));
-        setY(rand.nextInt(_height));
     }
 
 
