@@ -5,38 +5,37 @@ import Model.SimpleTortue;
 import Model.Tortue;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * @author ROCHE Gaetan & PLATTEAU Jonathan
  */
-public class TortueView {
+class TortueView {
     private Tortue tortue;
     private static final int rp=10, rb=5; // Taille de la pointe et de la base de la fleche
     private static final double ratioDegRad = 0.0174533; // Rapport radians/degres (pour la conversion)
 
-    public TortueView(Tortue t)
+    TortueView(Tortue t)
     {
         tortue = t;
     }
 
-    public Tortue getTortue() {
+    Tortue getTortue() {
         return tortue;
     }
 
-    public void drawTurtle(Graphics graph) {
+    void drawTurtle(Graphics graph) {
         if (graph==null)
             return;
 
         // Dessine les segments
-        try {
-            for (Segment seg : tortue.getListSegments()) {
+        ArrayList<Segment> segments = tortue.getCopyListSegments();
+        if(segments.size() != 0) {
+            for (Segment seg : segments) {
                 graph.setColor(seg.getColor());
                 graph.drawLine(seg.getPtStart().x, seg.getPtStart().y, seg.getPtEnd().x, seg.getPtEnd().y);
             }
-        }catch(Exception ignored){
-
         }
-
         //Calcule les 3 coins du triangle a partir de
         // la position de la tortue p
         Point p = new Point((int)tortue.getX(),(int)tortue.getY());

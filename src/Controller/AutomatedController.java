@@ -6,7 +6,7 @@ import View.ViewRandom;
 import java.util.ArrayList;
 
 public class AutomatedController extends Controleur {
-    protected ArrayList<AutomatedTortue> tortues;
+    private ArrayList<AutomatedTortue> tortues;
     private int tempo;
 
     public AutomatedController(ArrayList<AutomatedTortue> tortues, int width, int height) {
@@ -23,7 +23,6 @@ public class AutomatedController extends Controleur {
     public void run(){
         super.run();
         boolean changeColor = false;
-        boolean clearSegment = false;
         long tempo = System.currentTimeMillis();
         while(true) {
             if(System.currentTimeMillis() - tempo > 20000) {

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 public abstract class Tortue extends Observable {
-    protected static final double ratioDegRad = 0.0174533; // Rapport radians/degres (pour la conversion)
+    private static final double ratioDegRad = 0.0174533; // Rapport radians/degres (pour la conversion)
 
-    ArrayList<Segment> listSegments; // Trace de la tortue
+    private ArrayList<Segment> listSegments; // Trace de la tortue
 
     private double x, y;
     private int width, height;
@@ -14,7 +14,7 @@ public abstract class Tortue extends Observable {
     boolean crayon;
     private int coul;
 
-    public Tortue(int width, int height){
+    Tortue(int width, int height){
         this.width=width;
         this.height=height;
         listSegments = new ArrayList<>();
@@ -84,11 +84,11 @@ public abstract class Tortue extends Observable {
         return y;
     }
 
-    public void setY(double y) {
+    void setY(double y) {
         this.y = y;
     }
 
-    public void setX(double x) {
+    void setX(double x) {
         this.x = x;
     }
 
@@ -104,7 +104,7 @@ public abstract class Tortue extends Observable {
         return dir;
     }
 
-    public void setDir(int dir) {
+    void setDir(int dir) {
         this.dir = dir;
     }
 
@@ -120,15 +120,15 @@ public abstract class Tortue extends Observable {
         coul = n % 12;
     }
 
-    public void couleurSuivante() {
+    void couleurSuivante() {
         couleur(coul+1);
     }
 
-    public ArrayList<Segment> getListSegments() {
+    ArrayList<Segment> getListSegments() {
         return listSegments;
     }
 
-    public boolean getCrayon() {
-        return crayon;
+    public ArrayList<Segment> getCopyListSegments() {
+        return (ArrayList<Segment>)listSegments.clone();
     }
 }
