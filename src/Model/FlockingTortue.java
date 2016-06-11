@@ -5,7 +5,7 @@ import java.util.Random;
 import java.lang.Math;
 
 /**
- * Created by gaetan on 05/06/16.
+ * Created by John.
  */
 public class FlockingTortue extends AutomatedTortue {
     private int angle;
@@ -45,7 +45,7 @@ public class FlockingTortue extends AutomatedTortue {
         avancer(getVitesse());
     }
 
-    public boolean peutAvancer(Tortue t) {
+    private boolean peutAvancer(Tortue t) {
         int newX = (int) Math.round(this.getX()+getVitesse()*Math.cos(ratioDegRad*this.getDir()));
         int newY = (int) Math.round(this.getY()+getVitesse()*Math.sin(ratioDegRad*this.getDir()));
         while( Math.sqrt(Math.pow(t.getX() - newX, 2) + Math.pow(t.getY() - newY, 2)) < distMin && getVitesse() > 0){
@@ -57,11 +57,11 @@ public class FlockingTortue extends AutomatedTortue {
         return true;
     }
 
-    public double distance(Tortue t) {
+    private double distance(Tortue t) {
         return Math.sqrt(Math.pow(t.getX() - this.getX(), 2) + Math.pow(t.getY() - this.getY(), 2));
     }
 
-    public boolean estDansChampsVision(Tortue t){
+    private boolean estDansChampsVision(Tortue t){
         if(distance(t)>viewDist)
             return false;
         //angle entre l'axe des deux tortue et l'horizontal
