@@ -26,20 +26,20 @@ public class SimpleTortueTest extends TestCase {
 
     public void testSetPosition() throws Exception {
         caroline.setPosition(27, 86);
-        assertEquals(27, caroline.getX());
-        assertEquals(86, caroline.getY());
+        assertEquals(27., caroline.getX());
+        assertEquals(86., caroline.getY());
     }
 
     public void testAvancer() throws Exception {
         caroline.avancer(100);
-        assertEquals(300, caroline.getX());
-        assertEquals(100, caroline.getY());
+        assertEquals(300., caroline.getX());
+        assertEquals(100., caroline.getY());
     }
 
     public void testAvancerSortieCarte() throws Exception {
         caroline.avancer(250);
-        assertEquals(300, caroline.getX());
-        assertEquals(350, caroline.getY());
+        assertEquals(300., caroline.getX());
+        assertEquals(350., caroline.getY());
     }
 
     public void testDroite() throws Exception {
@@ -61,7 +61,8 @@ public class SimpleTortueTest extends TestCase {
     }
 
     public void testCarre() throws Exception {
-        double initialX, initialY, nombreSegment;
+        double initialX, initialY;
+        int nombreSegment;
         initialX = caroline.getX();
         initialY = caroline.getY();
         nombreSegment = caroline.getListSegments().size();
@@ -72,7 +73,8 @@ public class SimpleTortueTest extends TestCase {
     }
 
     public void testPoly() throws Exception {
-        double initialX, initialY, nombreSegment;
+        double initialX, initialY;
+        int nombreSegment;
         initialX = caroline.getX();
         initialY = caroline.getY();
         nombreSegment = caroline.getListSegments().size();
@@ -83,7 +85,8 @@ public class SimpleTortueTest extends TestCase {
     }
 
     public void testSpiral() throws Exception {
-        double initialX, initialY, nombreSegment;
+        double initialX, initialY;
+        int nombreSegment;
         initialX = caroline.getX();
         initialY = caroline.getY();
         nombreSegment = caroline.getListSegments().size();

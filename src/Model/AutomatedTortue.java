@@ -16,6 +16,15 @@ public abstract class AutomatedTortue extends Tortue{
         setX(rand.nextInt(width));
         setY(rand.nextInt(height));
     }
+    public AutomatedTortue(int width, int height, double x, double y, int dir, int vitesse) {
+        super(width, height);
+        Random rand = new Random();
+        this.setDir(rand.nextInt(360));
+        setX(x);
+        setY(y);
+        setDir(dir);
+        setVitesse(vitesse);
+    }
 
     int getVitesse() {
         return vitesse;

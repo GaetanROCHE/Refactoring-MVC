@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 public abstract class Tortue extends Observable {
-    private static final double ratioDegRad = 0.0174533; // Rapport radians/degres (pour la conversion)
+    static final double ratioDegRad = 0.0174533; // Rapport radians/degres (pour la conversion)
 
     private ArrayList<Segment> listSegments; // Trace de la tortue
 
@@ -85,11 +85,11 @@ public abstract class Tortue extends Observable {
     }
 
     void setY(double y) {
-        this.y = y;
+        this.y = y % height;
     }
 
     void setX(double x) {
-        this.x = x;
+        this.x = x % width;
     }
 
     public int getWidth() {
@@ -105,7 +105,7 @@ public abstract class Tortue extends Observable {
     }
 
     void setDir(int dir) {
-        this.dir = dir;
+        this.dir = dir % 360;
     }
 
     public void baisserCrayon() {
@@ -130,5 +130,9 @@ public abstract class Tortue extends Observable {
 
     public ArrayList<Segment> getCopyListSegments() {
         return (ArrayList<Segment>)listSegments.clone();
+    }
+
+    public boolean getCrayon() {
+        return crayon;
     }
 }

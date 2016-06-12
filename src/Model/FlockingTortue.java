@@ -21,31 +21,42 @@ public class FlockingTortue extends AutomatedTortue {
         setVitesse(vitesse);
     }
 
+    public FlockingTortue(int _width, int _height, int angle, int viewDist, int vitesse, int distMin, double x, double y, int dir){
+        super(_width, _height, x, y, dir, vitesse);
+        this.angle = angle;
+        this.viewDist = viewDist;
+        this.distMin = distMin;
+        this.crayon = true;
+    }
+
 
     public void move(ArrayList<AutomatedTortue> tortues) {
         int vitesseMoy = getVitesse();
         int dirMoy = getDir();
         int i = 1;
-        for (AutomatedTortue t: tortues) {
-            if(estDansChampsVision(t)){
-                // System.out.println("champs vision");
-                dirMoy += t.getDir();
-                vitesseMoy += t.getVitesse();
-                i++;
+        if(tortues!=null) {
+            for (AutomatedTortue t : tortues) {
+                if (estDansChampsVision(t)) {
+                    // System.out.println("champs vision");
+                    dirMoy += t.getDir();
+                    vitesseMoy += t.getVitesse();
+                    i++;
+                }
             }
-        }
-        setVitesse(vitesseMoy / i);
-        setDir(dirMoy / i);
 
-        //maintenant on check qu'on est a une distance minimal des autres tortues
-        // si non on réduit la vitesse
-        for (AutomatedTortue t : tortues) {
-            peutAvancer(t);
+            setVitesse(vitesseMoy / i);
+            setDir(dirMoy / i);
+
+            //maintenant on check qu'on est a une distance minimal des autres tortues
+            // si non on réduit la vitesse
+            for (AutomatedTortue t : tortues) {
+                peutAvancer(t);
+            }
         }
         avancer(getVitesse());
     }
 
-    private boolean peutAvancer(Tortue t) {
+    public void peutAvancer(Tortue t) {
         int newX = (int) Math.round(this.getX()+getVitesse()*Math.cos(ratioDegRad*this.getDir()));
         int newY = (int) Math.round(this.getY()+getVitesse()*Math.sin(ratioDegRad*this.getDir()));
         while( Math.sqrt(Math.pow(t.getX() - newX, 2) + Math.pow(t.getY() - newY, 2)) < distMin && getVitesse() > 0){
@@ -54,7 +65,6 @@ public class FlockingTortue extends AutomatedTortue {
             newX = (int) Math.round(this.getX()+getVitesse()*Math.cos(ratioDegRad*this.getDir()));
             newY = (int) Math.round(this.getY()+getVitesse()*Math.sin(ratioDegRad*this.getDir()));
         }
-        return true;
     }
 
     private double distance(Tortue t) {
